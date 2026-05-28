@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% include "cover.html" %}
+    
+    <div class="page-break"></div>
+    {% include "report_metadata.html" %}
+    
+    <div class="page-break"></div>
+    {% include "executive_summary.html" %}
+    
+    <div class="page-break"></div>
+    {% include "findings_summary.html" %}
+    
+    <div class="page-break"></div>
+    {% include "scan_profiles.html" %}
+    
+    <div class="page-break"></div>
+    {% include "detailed_findings.html" %}
+{% endblock %}

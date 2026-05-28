@@ -1,0 +1,180 @@
+/* styles.css */
+@page {
+    size: A4;
+    margin: 30mm 15mm 25mm 15mm;
+    @top-center {
+        content: element(header);
+        width: 100%;
+    }
+    @bottom-center {
+        content: element(footer);
+        width: 100%;
+    }
+}
+
+@page :first {
+    margin: 20mm;
+    @top-center { content: none; }
+    @bottom-center { content: none; }
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #333;
+    line-height: 1.5;
+    font-size: 11pt;
+}
+
+/* Header and Footer running elements */
+#page-header {
+    position: running(header);
+    width: 100%;
+    display: table;
+    border-bottom: 2px solid #1a237e;
+    padding-bottom: 5px;
+    font-size: 9pt;
+    font-weight: bold;
+}
+
+#page-header > div {
+    display: table-cell;
+    vertical-align: bottom;
+}
+
+.header-left { text-align: left; width: 33%; color: #1a237e; font-size: 12pt; }
+.header-center { text-align: center; width: 34%; font-size: 11pt; color: #333; }
+.header-right { text-align: right; width: 33%; color: #d32f2f; }
+
+#page-footer {
+    position: running(footer);
+    width: 100%;
+    display: table;
+    border-top: 1px solid #ccc;
+    padding-top: 5px;
+    font-size: 8pt;
+    color: #666;
+}
+
+#page-footer > div {
+    display: table-cell;
+    vertical-align: top;
+}
+
+.footer-left { text-align: left; width: 20%; }
+.footer-center { text-align: center; width: 60%; }
+.footer-right { text-align: right; width: 20%; color: #d32f2f; font-weight: bold; }
+
+.page-number::after {
+    content: counter(page);
+}
+
+/* Page Breaks */
+.page-break {
+    page-break-before: always;
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+    color: #1a237e;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+h1 {
+    font-size: 20pt;
+    border-bottom: 2px solid #1a237e;
+    padding-bottom: 5px;
+}
+
+/* Cover Page */
+.cover-page {
+    text-align: center;
+    padding-top: 80mm;
+}
+.cover-title {
+    font-size: 32pt;
+    font-weight: bold;
+    color: #1a237e;
+}
+.cover-subtitle {
+    font-size: 18pt;
+    color: #666;
+    margin-top: 20px;
+}
+.cover-date {
+    margin-top: 50px;
+    font-size: 14pt;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+/* Color System for Scan Profiles */
+.profile-discovery { --theme-color: #2196F3; }
+.profile-port { --theme-color: #00BCD4; }
+.profile-vulnerability { --theme-color: #F44336; }
+.profile-authenticated { --theme-color: #9C27B0; }
+.profile-compliance { --theme-color: #4CAF50; }
+.profile-config { --theme-color: #FF9800; }
+
+.section-header {
+    background-color: var(--theme-color, #1a237e);
+    color: #fff;
+    padding: 10px 15px;
+    margin-top: 20px;
+    border-radius: 4px;
+    page-break-after: avoid;
+}
+.section-header h2 {
+    color: #fff;
+    margin: 0;
+    border: none;
+}
+
+.accent-table th {
+    background-color: var(--theme-color, #f5f5f5);
+    color: #fff;
+}
+
+.callout {
+    border-left: 4px solid var(--theme-color, #1a237e);
+    background-color: #f9f9f9;
+    padding: 10px 15px;
+    margin: 15px 0;
+}
+
+.ai-explanation {
+    background-color: #f0f7ff;
+    border: 1px solid #bbdefb;
+    border-left: 4px solid #2196F3;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+}
+.ai-explanation::before {
+    content: "✨ AI Insight";
+    display: block;
+    font-weight: bold;
+    color: #1565c0;
+    margin-bottom: 8px;
+}
+
+/* Severity Colors */
+.severity-critical { color: #d32f2f; font-weight: bold; }
+.severity-high { color: #f57c00; font-weight: bold; }
+.severity-medium { color: #fbc02d; font-weight: bold; }
+.severity-low { color: #388e3c; font-weight: bold; }
+.severity-info { color: #1976d2; font-weight: bold; }

@@ -1,0 +1,43 @@
+<h1>Detailed Findings</h1>
+
+{% for finding in report.detailed_findings %}
+<div class="finding-block profile-{{ finding.profile_type | lower }}" style="margin-bottom: 40px;">
+    <h3 class="severity-{{ finding.severity | lower }}">
+        [{{ finding.severity | upper }}] {{ finding.name }}
+    </h3>
+    
+    <table>
+        <tr>
+            <th style="width: 150px;">Host</th>
+            <td>{{ finding.host }}</td>
+        </tr>
+        <tr>
+            <th>Port/Service</th>
+            <td>{{ finding.port }} / {{ finding.service }}</td>
+        </tr>
+        <tr>
+            <th>CVSS Score</th>
+            <td>{{ finding.cvss }}</td>
+        </tr>
+        <tr>
+            <th>CVE</th>
+            <td>{{ finding.cve | default("N/A") }}</td>
+        </tr>
+    </table>
+
+    <h4>Description</h4>
+    <p>{{ finding.description }}</p>
+    
+    <div class="ai-explanation">
+        {{ finding.ai_explanation }}
+    </div>
+
+    <h4>Remediation</h4>
+    <p>{{ finding.remediation }}</p>
+
+    <h4>Evidence</h4>
+    <pre style="background: #eee; padding: 10px; overflow-x: auto; font-size: 9pt;">
+{{ finding.evidence }}
+    </pre>
+</div>
+{% endfor %}

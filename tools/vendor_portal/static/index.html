@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GovernExa Vendor Portal</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Login Screen -->
+    <div id="login-container" class="glass-panel active">
+        <div class="logo">GovernExa <span>Vendor</span></div>
+        <h2>Secure Login</h2>
+        <p class="subtitle">Enter your vendor credentials to access the license generation portal.</p>
+        
+        <form id="login-form">
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required placeholder="admin">
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required placeholder="••••••••">
+            </div>
+            <p id="login-error" class="error-msg"></p>
+            <button type="submit" class="btn-primary">Authenticate</button>
+        </form>
+    </div>
+
+    <!-- Dashboard Screen -->
+    <div id="dashboard-container" class="glass-panel hidden">
+        <div class="header">
+            <div class="logo">GovernExa <span>Vendor</span></div>
+            <button id="logout-btn" class="btn-secondary">Logout</button>
+        </div>
+
+        <div class="dashboard-content">
+            <div class="form-section">
+                <h2>Generate License</h2>
+                <form id="generate-form">
+                    <div class="input-group">
+                        <label for="customer_name">Customer / Company Name</label>
+                        <input type="text" id="customer_name" required placeholder="e.g. Acme Corp">
+                    </div>
+                    
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="tier">License Tier</label>
+                            <select id="tier">
+                                <option value="Standard">Standard</option>
+                                <option value="Professional">Professional</option>
+                                <option value="Enterprise">Enterprise</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="validity_days">Validity (Days)</label>
+                            <input type="number" id="validity_days" required value="365" min="1">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="machine_fingerprint">Customer Machine Fingerprint</label>
+                        <input type="text" id="machine_fingerprint" required placeholder="GX-MACH-...">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Included Features</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" value="API_ACCESS" checked> API Access</label>
+                            <label><input type="checkbox" value="PDF_REPORTS" checked> PDF Reports</label>
+                            <label><input type="checkbox" value="SSO_SAML" checked> SSO (SAML)</label>
+                            <label><input type="checkbox" value="UNLIMITED_SCANS" checked> Unlimited Scans</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary" id="generate-btn">
+                        <span id="generate-text">Generate License Key</span>
+                        <span id="generate-loader" class="loader hidden"></span>
+                    </button>
+                </form>
+            </div>
+
+            <div class="result-section hidden" id="result-section">
+                <h3>License Generated Successfully!</h3>
+                
+                <div class="key-display">
+                    <p class="key-label">License Key</p>
+                    <div class="key-box">
+                        <code id="display-key">XXXX-XXXX-XXXX-XXXX</code>
+                        <button id="copy-btn" class="btn-icon" title="Copy to clipboard">📋</button>
+                    </div>
+                </div>
+
+                <div class="action-card">
+                    <h4>Offline Activation</h4>
+                    <p>Provide this file to the customer if their GovernExa instance is air-gapped.</p>
+                    <button id="download-btn" class="btn-accent">Download governexa-license-response.json</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

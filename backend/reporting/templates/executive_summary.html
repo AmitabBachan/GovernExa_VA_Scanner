@@ -1,0 +1,26 @@
+<h1>Executive Summary</h1>
+<p>{{ report.executive_summary.overview }}</p>
+
+<div class="ai-explanation">
+    {{ report.executive_summary.ai_synthesis }}
+</div>
+
+<h3>Key Metrics</h3>
+<table>
+    <tr>
+        <th>Critical</th>
+        <td class="severity-critical">{{ report.metrics.critical }}</td>
+    </tr>
+    <tr>
+        <th>High</th>
+        <td class="severity-high">{{ report.metrics.high }}</td>
+    </tr>
+    <tr>
+        <th>Medium</th>
+        <td class="severity-medium">{{ report.metrics.medium }}</td>
+    </tr>
+    <tr>
+        <th>Low</th>
+        <td class="severity-low">{{ report.metrics.low }}</td>
+    </tr>
+</table>

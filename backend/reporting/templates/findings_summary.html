@@ -1,0 +1,21 @@
+<h1>Findings Summary</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Severity</th>
+            <th>Vulnerability Name</th>
+            <th>Host</th>
+            <th>Profile</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for finding in report.findings %}
+        <tr>
+            <td class="severity-{{ finding.severity | lower }}">{{ finding.severity }}</td>
+            <td>{{ finding.name }}</td>
+            <td>{{ finding.host }}</td>
+            <td>{{ finding.profile_type }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

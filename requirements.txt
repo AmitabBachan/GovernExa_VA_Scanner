@@ -1,0 +1,17 @@
+fastapi
+uvicorn
+celery
+redis
+sqlalchemy
+asyncpg
+psycopg2-binary
+python-nmap
+scapy
+pydantic
+pydantic-settings
+hvac
+paramiko
+pywinrm
+WMI
+reportlab
+weasyprint

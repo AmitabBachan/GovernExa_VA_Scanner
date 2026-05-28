@@ -1,0 +1,36 @@
+<h1>Scan Profiles Analysis</h1>
+
+{% for profile in report.scan_profiles %}
+<!-- Apply the specific color class based on the profile type -->
+<div class="profile-{{ profile.type | lower }}">
+    <div class="section-header">
+        <h2>{{ profile.name }} Scan Analysis</h2>
+    </div>
+    
+    <p>{{ profile.description }}</p>
+    
+    <div class="callout">
+        <strong>Execution Summary:</strong> {{ profile.execution_summary }}
+    </div>
+    
+    <table class="accent-table">
+        <thead>
+            <tr>
+                <th>Target</th>
+                <th>Status</th>
+                <th>Findings Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for target in profile.targets %}
+            <tr>
+                <td>{{ target.ip }}</td>
+                <td>{{ target.status }}</td>
+                <td>{{ target.findings_count }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div style="margin-bottom: 30px;"></div>
+{% endfor %}

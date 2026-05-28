@@ -1,0 +1,24 @@
+<h1>Report Metadata</h1>
+<p>This section outlines the parameters and scope of the scan.</p>
+<table>
+    <tr>
+        <th>Scan Profile Name</th>
+        <td>{{ report.metadata.scan_profile_name }}</td>
+    </tr>
+    <tr>
+        <th>Date of Scan</th>
+        <td>{{ report.metadata.date }}</td>
+    </tr>
+    <tr>
+        <th>Target IP(s) / Range</th>
+        <td>{{ report.metadata.target_ips | join(', ') }}</td>
+    </tr>
+    <tr>
+        <th>Scan Duration</th>
+        <td>{{ report.metadata.duration }}</td>
+    </tr>
+    <tr>
+        <th>Scanner Engine Version</th>
+        <td>GovernExa VulnScope v{{ report.metadata.engine_version }}</td>
+    </tr>
+</table>

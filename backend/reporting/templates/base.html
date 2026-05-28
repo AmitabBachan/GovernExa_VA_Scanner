@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ report.title | default("Vulnerability Scan Report") }}</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="page-header">
+        <div class="header-left logo">GovernExa</div>
+        <div class="header-center">Vulnerability Scan Report</div>
+        <div class="header-right confidential">CONFIDENTIAL – INTERNAL SECURITY DOCUMENT</div>
+    </div>
+
+    <div id="page-footer">
+        <div class="footer-left">Page <span class="page-number"></span></div>
+        <div class="footer-center">Generated: {{ report.generated_timestamp }} by GovernExa VulnScope</div>
+        <div class="footer-right confidential">CONFIDENTIAL</div>
+    </div>
+
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
